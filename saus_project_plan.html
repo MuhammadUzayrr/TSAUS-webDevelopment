@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAUS Website — Full Project Plan & Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;--sur:#111827;--sur2:#1a2236;--bdr:#1e2d47;
+  --a1:#3b82f6;--a2:#22d3ee;--a3:#a78bfa;--a4:#34d399;
+  --gold:#fbbf24;--tx:#e2e8f0;--mu:#64748b;--red:#f87171;
+  --w1:#3b82f6;--w2:#8b5cf6;--w3:#06b6d4;--w4:#10b981;
+  --w5:#f59e0b;--w6:#ef4444;--w7:#ec4899;--w8:#84cc16;
+  --be:#f97316;--bot:#a78bfa;--sqa:#22d3ee;--spd:#34d399;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);padding-bottom:60px}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#060a15 0%,#0c1628 50%,#0f2040 100%);border-bottom:1px solid var(--bdr);padding:44px 40px 32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(59,130,246,.13) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-40px;left:180px;width:280px;height:280px;background:radial-gradient(circle,rgba(34,211,238,.07) 0%,transparent 70%);border-radius:50%}
+.hi{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:var(--a2);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:4px;margin-bottom:18px}
+.badge span{width:6px;height:6px;background:var(--a4);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,46px);font-weight:800;line-height:1.1;margin-bottom:10px;background:linear-gradient(135deg,#fff 0%,#93c5fd 60%,#67e8f9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:14px;color:var(--mu);max-width:700px;line-height:1.6;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--sur2);border:1px solid var(--bdr);border-radius:8px;padding:9px 15px;display:flex;align-items:center;gap:9px}
+.chip .n{font-family:'Syne',sans-serif;font-size:20px;font-weight:800}
+.chip .l{font-size:11px;color:var(--mu);line-height:1.3}
+
+/* ── LEGEND ── */
+.leg{background:var(--sur);border-bottom:1px solid var(--bdr);padding:10px 40px}
+.leg-in{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lg{font-size:10px;color:var(--mu);font-family:'JetBrains Mono',monospace;margin-right:4px;text-transform:uppercase;letter-spacing:1px}
+.lp{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:20px;border:1px solid;font-weight:500}
+.lp .d{width:6px;height:6px;border-radius:50%}
+.fe{color:#93c5fd;border-color:rgba(147,197,253,.3);background:rgba(147,197,253,.07)}.fe .d{background:#93c5fd}
+.be2{color:var(--be);border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.07)}.be2 .d{background:var(--be)}
+.bo{color:var(--bot);border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.07)}.bo .d{background:var(--bot)}
+.sq{color:var(--sqa);border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.07)}.sq .d{background:var(--sqa)}
+.sp{color:var(--spd);border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.07)}.sp .d{background:var(--spd)}
+.ma{color:var(--gold);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.07)}.ma .d{background:var(--gold)}
+
+/* ── TABS ── */
+.tabs{background:var(--sur);border-bottom:1px solid var(--bdr);padding:0 40px;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap}
+.tabs::-webkit-scrollbar{height:3px}.tabs::-webkit-scrollbar-thumb{background:var(--bdr)}
+.tab{display:inline-block;padding:13px 16px;font-size:13px;font-weight:500;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab:hover{color:var(--tx)}.tab.on{color:var(--a2);border-bottom-color:var(--a2)}
+
+/* ── LAYOUT ── */
+.con{max-width:1200px;margin:0 auto;padding:30px 40px}
+.sec{display:none}.sec.on{display:block}
+.sl{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
+.ss{font-size:13px;color:var(--mu);margin-bottom:26px}
+
+/* ── TIMELINE ── */
+.tlg{display:grid;gap:0}
+.wb{display:grid;grid-template-columns:170px 1fr;position:relative}
+.wb::before{content:'';position:absolute;left:169px;top:0;bottom:0;width:1px;background:var(--bdr)}
+.wl{padding:18px 22px 18px 0;position:sticky;top:52px;align-self:start}
+.wn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.wt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;line-height:1.3}
+.wd{font-size:11px;color:var(--mu);margin-top:3px;font-family:'JetBrains Mono',monospace}
+.wb2{padding:18px 0 18px 26px;position:relative}
+.wb2::before{content:'';position:absolute;left:0;top:26px;width:10px;height:10px;border-radius:50%;border:2px solid;background:var(--bg)}
+.w1 .wt,.w1 .wb2::before{color:var(--w1);border-color:var(--w1)}
+.w2 .wt,.w2 .wb2::before{color:var(--w2);border-color:var(--w2)}
+.w3 .wt,.w3 .wb2::before{color:var(--w3);border-color:var(--w3)}
+.w4 .wt,.w4 .wb2::before{color:var(--w4);border-color:var(--w4)}
+.w5 .wt,.w5 .wb2::before{color:var(--w5);border-color:var(--w5)}
+.w6 .wt,.w6 .wb2::before{color:var(--w6);border-color:var(--w6)}
+.w7 .wt,.w7 .wb2::before{color:var(--w7);border-color:var(--w7)}
+.w8 .wt,.w8 .wb2::before{color:var(--w8);border-color:var(--w8)}
+.w9 .wt,.w9 .wb2::before{color:#f472b6;border-color:#f472b6}
+
+.tg{display:grid;gap:9px}
+.tc{background:var(--sur);border:1px solid var(--bdr);border-radius:8px;padding:13px 15px;border-left:3px solid;transition:transform .15s}
+.tc:hover{transform:translateX(3px)}
+.tc.tbe{border-left-color:var(--be)!important}
+.tc.tbo{border-left-color:var(--bot)!important}
+.tc.tsq{border-left-color:var(--sqa)!important}
+.tc.tsp{border-left-color:var(--spd)!important}
+.tc.tma{border-left-color:var(--gold)!important}
+.w1 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w1)}
+.w2 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w2)}
+.w3 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w3)}
+.w4 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w4)}
+.w5 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w5)}
+.w6 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w6)}
+.w7 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w7)}
+.w8 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:var(--w8)}
+.w9 .tc:not(.tbe):not(.tbo):not(.tsq):not(.tsp):not(.tma){border-left-color:#f472b6}
+
+.th{display:flex;align-items:flex-start;gap:9px;margin-bottom:5px}
+.ti{font-size:13px;flex-shrink:0;margin-top:1px}
+.tn{font-size:13px;font-weight:500;line-height:1.3;font-family:'Syne',sans-serif}
+.te{margin-left:auto;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);background:var(--sur2);padding:2px 6px;border-radius:3px}
+.tbdg{font-size:9px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;padding:2px 5px;border-radius:3px;flex-shrink:0;margin-left:4px;align-self:center}
+.bfe{background:rgba(147,197,253,.12);color:#93c5fd}
+.bbe{background:rgba(249,115,22,.15);color:var(--be)}
+.bbo{background:rgba(167,139,250,.15);color:var(--bot)}
+.bsq{background:rgba(34,211,238,.15);color:var(--sqa)}
+.bsp{background:rgba(52,211,153,.15);color:var(--spd)}
+.bma{background:rgba(251,191,36,.15);color:var(--gold)}
+.pls{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.pl{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--sur2);color:var(--mu);border:1px solid var(--bdr)}
+.tn2{font-size:12px;color:var(--mu);margin-top:5px;font-style:italic;line-height:1.4}
+.mbar{margin-top:11px;padding:9px 13px;background:linear-gradient(90deg,rgba(34,211,238,.08),transparent);border:1px solid rgba(34,211,238,.2);border-radius:6px;font-size:12px;color:var(--a2);display:flex;align-items:center;gap:8px}
+.mdiv{grid-column:1/-1;margin:8px 0 4px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--mu);display:flex;align-items:center;gap:12px}
+.mdiv::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bdr),transparent)}
+
+/* ── TECH MODULES ── */
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.mc{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;border-top:3px solid}
+.mc.mbe{border-top-color:var(--be)}.mc.mbo{border-top-color:var(--bot)}.mc.msq{border-top-color:var(--sqa)}.mc.msp{border-top-color:var(--spd)}.mc.mma{border-top-color:var(--gold)}
+.mh{padding:15px 17px 11px;border-bottom:1px solid var(--bdr)}
+.mtr{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.mic{font-size:20px}.mti{font-family:'Syne',sans-serif;font-size:15px;font-weight:800}
+.msu{font-size:12px;color:var(--mu);line-height:1.5}
+.mbd{padding:13px 17px}
+.mst{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin:11px 0 7px}
+.mst:first-child{margin-top:0}
+.spls{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.spl{font-size:11px;font-family:'JetBrains Mono',monospace;padding:3px 8px;border-radius:4px;border:1px solid var(--bdr);background:var(--sur2);color:#94a3b8}
+.fl{list-style:none}
+.fl li{font-size:12px;color:#94a3b8;padding:5px 0;display:flex;align-items:flex-start;gap:7px;border-bottom:1px solid rgba(255,255,255,.04)}
+.fl li:last-child{border-bottom:none}
+.fd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.fb{background:var(--be)}.fbo{background:var(--bot)}.fsq{background:var(--sqa)}.fsp{background:var(--spd)}.fma{background:var(--gold)}
+.ftg{margin-left:auto;font-size:10px;font-family:'JetBrains Mono',monospace;padding:1px 5px;border-radius:3px;flex-shrink:0;background:var(--sur2);color:var(--mu)}
+.ptb{width:100%;border-collapse:collapse;font-size:12px;margin-top:7px}
+.ptb th{background:var(--sur2);color:var(--mu);font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:6px 9px;text-align:left;border-bottom:1px solid var(--bdr)}
+.ptb td{padding:6px 9px;border-bottom:1px solid rgba(255,255,255,.04);color:#94a3b8;vertical-align:top}
+.ptb tr:last-child td{border-bottom:none}
+
+/* ── PAGES ── */
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:15px}
+.dc{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
+.dh{padding:13px 15px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--bdr)}
+.die{font-size:17px}.dti{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.dct{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu)}
+.db{padding:11px 15px}
+.pll{list-style:none}
+.pll li{font-size:12px;color:#94a3b8;padding:3px 0;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(255,255,255,.04)}
+.pll li:last-child{border-bottom:none}
+.pll li::before{content:'→';font-size:10px;color:var(--mu);flex-shrink:0}
+.pt{margin-left:auto;font-size:10px;padding:1px 5px;border-radius:3px;font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.tn3{background:rgba(52,211,153,.15);color:var(--a4)}
+.tr2{background:rgba(251,191,36,.15);color:var(--gold)}
+.tc2{background:rgba(167,139,250,.15);color:var(--a3)}
+.tm2{background:rgba(59,130,246,.15);color:var(--a1)}
+.tbe2{background:rgba(249,115,22,.15);color:var(--be)}
+.tbo2{background:rgba(167,139,250,.15);color:var(--bot)}
+.tsq2{background:rgba(34,211,238,.15);color:var(--sqa)}
+.tsp2{background:rgba(52,211,153,.15);color:var(--spd)}
+
+/* ── CONTENT ── */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:15px}
+.cc{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:15px}
+.cc h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:11px;display:flex;align-items:center;gap:7px}
+.cl{list-style:none}
+.cl li{font-size:12px;color:#94a3b8;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:7px;align-items:flex-start}
+.cl li:last-child{border-bottom:none}
+.cl li::before{content:'☐';color:var(--mu);flex-shrink:0;margin-top:1px}
+.pr{font-size:10px;padding:1px 5px;border-radius:3px;margin-left:auto;flex-shrink:0}
+.ph{background:rgba(248,113,113,.15);color:var(--red)}
+.pm{background:rgba(251,191,36,.15);color:var(--gold)}
+.pl2{background:rgba(52,211,153,.15);color:var(--a4)}
+
+/* ── OVERVIEW ── */
+.og{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.oc{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:18px}
+.oc h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:13px;display:flex;align-items:center;gap:7px}
+.prr{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.prl{font-size:12px;color:var(--mu);width:130px;flex-shrink:0}
+.prw{flex:1;height:6px;background:var(--sur2);border-radius:3px;overflow:hidden}
+.prb{height:100%;border-radius:3px}
+.prp{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);width:28px;text-align:right}
+.tl3{list-style:none}
+.tl3 li{font-size:13px;color:#94a3b8;padding:6px 0;display:flex;align-items:center;gap:9px;border-bottom:1px solid rgba(255,255,255,.04)}
+.tl3 li:last-child{border-bottom:none}
+.tli{font-size:15px;width:22px;text-align:center}
+.tlp{margin-left:auto;font-size:11px;color:var(--mu)}
+
+/* ════════════════════════════════════
+   PRICING SECTION — special styles
+   ════════════════════════════════════ */
+.price-hero{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(167,139,250,.06));border:1px solid var(--bdr);border-radius:14px;padding:24px 28px;margin-bottom:24px;position:relative;overflow:hidden}
+.price-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(251,191,36,.08),transparent 70%);border-radius:50%}
+.ph-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.ph-left h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
+.ph-left p{font-size:13px;color:var(--mu);max-width:500px;line-height:1.6}
+.ph-stamp{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.25);border-radius:10px;padding:14px 20px;text-align:center;flex-shrink:0}
+.ph-stamp .ps-label{font-size:10px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;color:var(--a4);margin-bottom:4px}
+.ph-stamp .ps-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--a4);line-height:1}
+.ph-stamp .ps-sub{font-size:11px;color:var(--mu);margin-top:3px}
+
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.price-card{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;overflow:hidden}
+.pc-header{padding:16px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:12px}
+.pc-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.av1{background:linear-gradient(135deg,rgba(59,130,246,.25),rgba(167,139,250,.2))}
+.av2{background:linear-gradient(135deg,rgba(249,115,22,.25),rgba(251,191,36,.2))}
+.pc-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:800}
+.pc-role{font-size:11px;color:var(--mu);margin-top:2px}
+.pc-body{padding:16px 18px}
+.pc-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);margin:14px 0 9px}
+.pc-section-title:first-child{margin-top:0}
+.line-items{list-style:none}
+.li-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12.5px}
+.li-item:last-child{border-bottom:none}
+.li-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.li-name{color:#94a3b8;flex:1}
+.li-market{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);text-decoration:line-through;flex-shrink:0}
+.li-our{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;flex-shrink:0}
+.pc-total{background:var(--sur2);border-radius:8px;padding:14px 16px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.pct-label{font-size:13px;color:var(--mu)}
+.pct-market{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mu);text-decoration:line-through}
+.pct-our{font-family:'Syne',sans-serif;font-size:22px;font-weight:800}
+.pct-save{font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(52,211,153,.15);color:var(--a4);font-family:'JetBrains Mono',monospace}
+
+.vs-divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 24px;flex-wrap:wrap}
+.vs-box{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:18px 24px;flex:1;min-width:220px;text-align:center}
+.vs-box-label{font-size:11px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:8px}
+.vs-box-amount{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1}
+.vs-box-note{font-size:11px;color:var(--mu);margin-top:5px}
+.vs-market .vs-box-amount{color:var(--red)}
+.vs-our .vs-box-amount{color:var(--a4)}
+.vs-sep{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--mu)}
+
+.scope-exclusions{background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:16px 20px;margin-bottom:24px}
+.scope-exclusions h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.excl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.excl-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mu)}
+.excl-item::before{content:'✕';color:rgba(251,191,36,.6);font-size:11px}
+
+.maint-card{background:var(--sur);border:1px solid rgba(251,191,36,.2);border-radius:12px;padding:20px;margin-bottom:24px;border-top:3px solid var(--gold)}
+.mc-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.mc-icon{font-size:28px}
+.mc-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--gold)}
+.mc-sub{font-size:12px;color:var(--mu);margin-top:3px;line-height:1.5}
+.maint-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.maint-item{background:var(--sur2);border-radius:8px;padding:12px 14px;border:1px solid var(--bdr)}
+.maint-item h5{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:6px;color:var(--tx)}
+.maint-item ul{list-style:none}
+.maint-item ul li{font-size:11px;color:var(--mu);padding:2px 0;display:flex;align-items:flex-start;gap:5px}
+.maint-item ul li::before{content:'·';flex-shrink:0;color:var(--gold)}
+
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px}
+.term-card{background:var(--sur2);border-radius:8px;padding:12px 14px;border:1px solid var(--bdr)}
+.term-card h5{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:7px}
+.term-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.term-note{font-size:11px;color:var(--mu);line-height:1.4}
+
+@media(max-width:700px){
+  .hero,.con,.tabs,.leg{padding-left:20px;padding-right:20px}
+  .wb{grid-template-columns:1fr}.wb::before{display:none}
+  .wl{padding:18px 0 0}.wb2{padding:11px 0 11px 14px}
+  .dg,.mg,.cg,.og,.price-grid{grid-template-columns:1fr}
+  .vs-divider{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hi">
+    <div class="badge"><span></span> Official Project Proposal — saus.edu.pk Rebuild</div>
+    <h1>SAUS Website Rebuild<br>Full Project Plan & Proposal</h1>
+    <p class="hero-sub">Complete 9-week development roadmap + 1-month maintenance — Frontend, Backend, TSAUS Chatbot, SQA Testing, and Speed Optimization. Prepared by Muhammad Uzair & Shayan Ali.</p>
+    <div class="chips">
+      <div class="chip"><div class="n" style="color:var(--a1)">50+</div><div class="l">Frontend<br>Pages</div></div>
+      <div class="chip"><div class="n" style="color:var(--be)">12</div><div class="l">Backend<br>Modules</div></div>
+      <div class="chip"><div class="n" style="color:var(--bot)">20+</div><div class="l">Chatbot<br>Intents</div></div>
+      <div class="chip"><div class="n" style="color:var(--sqa)">180+</div><div class="l">SQA<br>Test Cases</div></div>
+      <div class="chip"><div class="n" style="color:var(--spd)">90+</div><div class="l">Target<br>PageSpeed</div></div>
+      <div class="chip"><div class="n" style="color:var(--gold)">9</div><div class="l">Total<br>Weeks</div></div>
+      <div class="chip"><div class="n" style="color:var(--a3)">2</div><div class="l">Dedicated<br>Developers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LEGEND ═══ -->
+<div class="leg">
+  <div class="leg-in">
+    <span class="lg">Tracks:</span>
+    <span class="lp fe"><span class="d"></span>Frontend</span>
+    <span class="lp be2"><span class="d"></span>Backend</span>
+    <span class="lp bo"><span class="d"></span>Chatbot (TSAUS)</span>
+    <span class="lp sq"><span class="d"></span>SQA</span>
+    <span class="lp sp"><span class="d"></span>Speed</span>
+    <span class="lp ma"><span class="d"></span>Maintenance</span>
+  </div>
+</div>
+
+<!-- ═══ TABS ═══ -->
+<div class="tabs">
+  <span class="tab on" onclick="go('tl',this)">📅 Timeline</span>
+  <span class="tab" onclick="go('tech',this)">🔧 Tech Modules</span>
+  <span class="tab" onclick="go('pages',this)">📄 All Pages</span>
+  <span class="tab" onclick="go('content',this)">✍️ Content Plan</span>
+  <span class="tab" onclick="go('pricing',this)">💰 Pricing Proposal</span>
+  <span class="tab" onclick="go('ov',this)">📊 Overview</span>
+</div>
+
+<!-- ════════════════════════════════════════
+     TIMELINE
+════════════════════════════════════════ -->
+<div id="tl" class="sec on"><div class="con">
+  <div class="sl">9-Week Full-Stack Development Timeline</div>
+  <p class="ss">8 weeks of active development + 1 month maintenance. All 5 tracks run simultaneously — colour-coded cards show each track's tasks per week.</p>
+  <div class="tlg">
+
+    <div class="mdiv">📅 Month 1 — Foundation, Architecture & Core Build</div>
+
+    <!-- W1 -->
+    <div class="wb w1">
+      <div class="wl"><div class="wn">Week 01</div><div class="wt">Setup & Architecture</div><div class="wd">Days 1–7</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">⚙️</span><span class="tn">WordPress + Unipix Theme Setup</span><span class="tbdg bfe">Frontend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">WordPress 6.x</span><span class="pl">Unipix Theme</span><span class="pl">Elementor Pro</span><span class="pl">SSL + Staging</span><span class="pl">Demo Import</span><span class="pl">Brand Colors</span><span class="pl">Mega Menu</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">🗄️</span><span class="tn">Backend Architecture & DB Schema</span><span class="tbdg bbe">Backend</span><span class="te">1.5d</span></div>
+        <div class="pls"><span class="pl">7 CPT Design</span><span class="pl">ACF Pro Install</span><span class="pl">DB Schema Map</span><span class="pl">REST API Plan</span><span class="pl">User Roles Map</span><span class="pl">WPForms Pro</span><span class="pl">SMTP Config</span></div>
+        <div class="tn2">7 CPTs: Faculty, Department, Programs, Notices, Downloads, Research Papers, Careers. Map all ACF field groups before coding.</div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS Chatbot: Platform Selection & Planning</span><span class="tbdg bbo">Chatbot</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Choose Platform</span><span class="pl">Define 20+ Intents</span><span class="pl">Map Conversation Flows</span><span class="pl">Collect FAQ data from admin</span><span class="pl">Branding spec</span></div>
+        <div class="tn2">TSAUS = SAUS-branded chatbot. Core use-cases: admissions, programs, fees, directions, exam dates, Urdu/English toggle.</div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: Master Test Plan & Toolchain Setup</span><span class="tbdg bsq">SQA</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Write STP Document</span><span class="pl">Bug Tracker (Trello)</span><span class="pl">Playwright Install</span><span class="pl">BrowserStack</span><span class="pl">TC Template</span><span class="pl">Pass/Fail Criteria</span></div></div>
+        <div class="tc tsp"><div class="th"><span class="ti">⚡</span><span class="tn">Speed: Baseline Audit & CDN Setup</span><span class="tbdg bsp">Speed</span><span class="te">0.5d</span></div>
+        <div class="pls"><span class="pl">GTmetrix baseline (current site)</span><span class="pl">WP Rocket install</span><span class="pl">Cloudflare CDN</span><span class="pl">Target set: Mobile 85+</span></div></div>
+      </div><div class="mbar">🏁 Wk 1: Staging live · DB schema done · TSAUS platform chosen · STP written</div></div>
+    </div>
+
+    <!-- W2 -->
+    <div class="wb w2">
+      <div class="wl"><div class="wn">Week 02</div><div class="wt">Homepage, About & Backend Core</div><div class="wd">Days 8–14</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">🏠</span><span class="tn">Homepage Full Build</span><span class="tbdg bfe">Frontend</span><span class="te">2.5d</span></div>
+        <div class="pls"><span class="pl">Hero Slider (4 slides)</span><span class="pl">Stats Counter</span><span class="pl">Departments Strip</span><span class="pl">News Ticker</span><span class="pl">VC Message</span><span class="pl">Events Block</span><span class="pl">Notice Board</span><span class="pl">Apply Now CTA</span><span class="pl">TSAUS Chatbot Placement</span></div></div>
+        <div class="tc"><div class="th"><span class="ti">🏛️</span><span class="tn">About Section (4 pages)</span><span class="tbdg bfe">Frontend</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">About Us</span><span class="pl">Vision & Mission</span><span class="pl">Aims & Objectives</span><span class="pl">At a Glance (animated counters)</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">🔧</span><span class="tn">All 7 Custom Post Types + ACF Build</span><span class="tbdg bbe">Backend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Faculty CPT (12 ACF fields)</span><span class="pl">Departments CPT</span><span class="pl">Programs CPT</span><span class="pl">Notices CPT + expiry</span><span class="pl">Downloads CPT + file</span><span class="pl">Research Papers CPT</span><span class="pl">Careers CPT</span><span class="pl">Shared Dept Taxonomy</span></div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS: Knowledge Base Phase 1</span><span class="tbdg bbo">Chatbot</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">60+ Admissions FAQs</span><span class="pl">Fee structure data</span><span class="pl">Campus info & directions</span><span class="pl">Contact numbers & emails</span><span class="pl">Key dates & deadlines</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: TC-001–020 (Homepage & Nav)</span><span class="tbdg bsq">SQA</span><span class="te">0.5d</span></div>
+        <div class="pls"><span class="pl">Hero slider function</span><span class="pl">All nav links</span><span class="pl">Mobile layout</span><span class="pl">Counter animation</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- W3 -->
+    <div class="wb w3">
+      <div class="wl"><div class="wn">Week 03</div><div class="wt">Leadership, Governance & Forms</div><div class="wd">Days 15–21</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">🎓</span><span class="tn">Leadership & Governance Pages</span><span class="tbdg bfe">Frontend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">VC Message</span><span class="pl">Senate</span><span class="pl">Syndicate</span><span class="pl">Selection Board</span><span class="pl">Finance & Planning Cmte</span><span class="pl">5 Admin Office Pages</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">📋</span><span class="tn">Forms Backend + Portal SSO Integration</span><span class="tbdg bbe">Backend</span><span class="te">3d</span></div>
+        <div class="pls"><span class="pl">Admissions Query Form</span><span class="pl">Contact Form</span><span class="pl">Careers Application Form</span><span class="pl">ORIC Teachers Data Form</span><span class="pl">SMTP Email Routing</span><span class="pl">Auto-reply Emails</span><span class="pl">hCaptcha on all forms</span><span class="pl">Portal SSO (my.saus.edu.pk)</span><span class="pl">Faculty Profile Login</span></div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS: Dept & Academic Flows</span><span class="tbdg bbo">Chatbot</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">7 dept info flows</span><span class="pl">Program eligibility Q&A</span><span class="pl">Scholarship info</span><span class="pl">Academic calendar queries</span><span class="pl">Fallback → Admissions</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: TC-021–050 (Forms & Portal)</span><span class="tbdg bsq">SQA</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Valid/invalid form inputs</span><span class="pl">Email delivery check</span><span class="pl">CAPTCHA bypass attempt</span><span class="pl">Portal redirect test</span><span class="pl">Session timeout test</span></div></div>
+      </div><div class="mbar">🏁 Wk 3: Governance pages live · Forms backend functional · Portal SSO connected</div></div>
+    </div>
+
+    <!-- W4 -->
+    <div class="wb w4">
+      <div class="wl"><div class="wn">Week 04</div><div class="wt">7 Departments & Academics</div><div class="wd">Days 22–28</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">🎓</span><span class="tn">All 7 Department Pages</span><span class="tbdg bfe">Frontend</span><span class="te">2.5d</span></div>
+        <div class="pls"><span class="pl">Computer Science</span><span class="pl">Mathematics</span><span class="pl">Business Administration</span><span class="pl">Commerce</span><span class="pl">English Language & Lit</span><span class="pl">Teacher Education</span><span class="pl">Basic Sciences</span></div>
+        <div class="tn2">Each uses Unipix single-dept template: overview, programs, faculty grid, research, facilities.</div></div>
+        <div class="tc"><div class="th"><span class="ti">📋</span><span class="tn">Academics Core Pages (8 pages)</span><span class="tbdg bfe">Frontend</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Academic Calendar</span><span class="pl">Programs Offered</span><span class="pl">Grading Criteria</span><span class="pl">Scholarships</span><span class="pl">HEC Policies</span><span class="pl">Affiliation Rules</span><span class="pl">Code of Conduct</span><span class="pl">HEC Supervisors</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">📅</span><span class="tn">Events, Notices & Newsroom Backend</span><span class="tbdg bbe">Backend</span><span class="te">1.5d</span></div>
+        <div class="pls"><span class="pl">Events Calendar plugin config</span><span class="pl">Event categories</span><span class="pl">Recurring events</span><span class="pl">Notices CPT + auto-expiry</span><span class="pl">AJAX news ticker</span><span class="pl">Email on new notice</span><span class="pl">Notices Editor role</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: TC-051–080 (Dept & Events)</span><span class="tbdg bsq">SQA</span><span class="te">0.5d</span></div>
+        <div class="pls"><span class="pl">Dept content accuracy</span><span class="pl">Faculty grid render</span><span class="pl">PDF links verified</span><span class="pl">Events calendar test</span><span class="pl">Notice expiry logic</span></div></div>
+      </div></div>
+    </div>
+
+    <div class="mdiv">📅 Month 2 — Faculty, Admissions, TSAUS Launch & QA</div>
+
+    <!-- W5 -->
+    <div class="wb w5">
+      <div class="wl"><div class="wn">Week 05</div><div class="wt">Faculty System & TSAUS Go-Live</div><div class="wd">Days 29–35</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">👨‍🏫</span><span class="tn">Faculty Directory + Library Pages</span><span class="tbdg bfe">Frontend</span><span class="te">1.5d</span></div>
+        <div class="pls"><span class="pl">Filterable Faculty Directory</span><span class="pl">Permanent + Visiting grids</span><span class="pl">Filter by Department</span><span class="pl">Search by Name</span><span class="pl">Library Page</span><span class="pl">Digital Library link</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">🔒</span><span class="tn">Faculty Self-Edit Profile Backend</span><span class="tbdg bbe">Backend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Faculty login (custom WP role)</span><span class="pl">Profile self-update form</span><span class="pl">Headshot upload</span><span class="pl">Publications repeater</span><span class="pl">Admin approval workflow</span><span class="pl">Scholar/ResearchGate field</span><span class="pl">Faculty CSV export</span></div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS Chatbot: Full Go-Live on Staging</span><span class="tbdg bbo">Chatbot</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Embed on all pages</span><span class="pl">SAUS branding (logo + colors)</span><span class="pl">All 20+ intents active</span><span class="pl">Live chat fallback</span><span class="pl">Offline message collection</span><span class="pl">English / Urdu toggle</span><span class="pl">Analytics dashboard</span><span class="pl">WhatsApp fallback number</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: TC-081–100 (Chatbot All 20 Flows)</span><span class="tbdg bsq">SQA</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">All 20 intents happy path</span><span class="pl">Edge case / typo inputs</span><span class="pl">Fallback tests</span><span class="pl">Mobile widget display</span><span class="pl">Urdu language switch</span><span class="pl">Offline message form</span></div></div>
+        <div class="tc tsp"><div class="th"><span class="ti">⚡</span><span class="tn">Speed: Mid-Sprint Audit + Image Optimization</span><span class="tbdg bsp">Speed</span><span class="te">0.5d</span></div>
+        <div class="pls"><span class="pl">GTmetrix staging report</span><span class="pl">All images → WebP</span><span class="pl">Lazy loading enabled</span><span class="pl">Top bottlenecks documented</span></div></div>
+      </div><div class="mbar">🏁 Wk 5: TSAUS chatbot live · Faculty self-edit working · Mid-sprint speed audit done</div></div>
+    </div>
+
+    <!-- W6 -->
+    <div class="wb w6">
+      <div class="wl"><div class="wn">Week 06</div><div class="wt">Full Admissions Module</div><div class="wd">Days 36–42</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">🎯</span><span class="tn">Admissions Module — 16 Pages</span><span class="tbdg bfe">Frontend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Admissions Hub</span><span class="pl">Eligibility</span><span class="pl">Process (visual steps)</span><span class="pl">Fee Structure (tables)</span><span class="pl">Required Docs</span><span class="pl">Reserved Seats</span><span class="pl">Merit Criteria</span><span class="pl">FAQs</span><span class="pl">Apply Online</span><span class="pl">Sample Papers</span><span class="pl">Prospectus</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">📥</span><span class="tn">Downloads Center + Merit Lists Backend</span><span class="tbdg bbe">Backend</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Downloads CPT + categories</span><span class="pl">Secure PDF hosting</span><span class="pl">Download counter</span><span class="pl">6 official forms</span><span class="pl">File versioning</span><span class="pl">Merit Lists CPT</span><span class="pl">Dynamic filter (year/prog)</span><span class="pl">Notices auto-archive</span></div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS: Admissions Deep Flow Tuning</span><span class="tbdg bbo">Chatbot</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Fee Q&A all programs</span><span class="pl">Merit list info & dates</span><span class="pl">Deadline alerts</span><span class="pl">Required docs checklist</span><span class="pl">Direct page link buttons</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: TC-101–130 (Full Admissions QA)</span><span class="tbdg bsq">SQA</span><span class="te">1.5d</span></div>
+        <div class="pls"><span class="pl">6 forms download + open</span><span class="pl">Admissions query submission</span><span class="pl">Fee table mobile</span><span class="pl">Merit list filter</span><span class="pl">Notice expiry logic</span><span class="pl">FAQ toggle</span><span class="pl">Download counter</span></div></div>
+      </div></div>
+    </div>
+
+    <!-- W7 -->
+    <div class="wb w7">
+      <div class="wl"><div class="wn">Week 07</div><div class="wt">Life at SAUS, Research & SQA Blitz</div><div class="wd">Days 43–49</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc"><div class="th"><span class="ti">🎪</span><span class="tn">Life at SAUS + Facilities + Research (All Pages)</span><span class="tbdg bfe">Frontend</span><span class="te">2.5d</span></div>
+        <div class="pls"><span class="pl">Campus Overview</span><span class="pl">Events</span><span class="pl">News Archive</span><span class="pl">Student Forums</span><span class="pl">Gallery</span><span class="pl">Campus Tour (video)</span><span class="pl">10 Facilities Pages</span><span class="pl">Research Overview</span><span class="pl">3 QEC Pages</span><span class="pl">8 ORIC Pages</span><span class="pl">Blog, SJHSS, Careers, Conference</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">📰</span><span class="tn">News, Gallery, Blog & Research Backend</span><span class="tbdg bbe">Backend</span><span class="te">1.5d</span></div>
+        <div class="pls"><span class="pl">Blog categories + RSS</span><span class="pl">Gallery CPT + albums</span><span class="pl">AJAX news ticker</span><span class="pl">Social share buttons</span><span class="pl">Careers CPT</span><span class="pl">Research Papers CPT</span></div></div>
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA BLITZ — Cross-Browser + Accessibility (TC-131–160)</span><span class="tbdg bsq">SQA</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">Chrome/Firefox/Safari/Edge</span><span class="pl">Android & iOS</span><span class="pl">iPad tablet</span><span class="pl">All links verified</span><span class="pl">Gallery lightbox</span><span class="pl">YouTube embeds</span><span class="pl">WAVE Accessibility</span><span class="pl">WCAG 2.1 AA</span><span class="pl">Screaming Frog 404 scan</span></div></div>
+        <div class="tc tsp"><div class="th"><span class="ti">⚡</span><span class="tn">Speed: Phase 1 — Caching, Images & Code</span><span class="tbdg bsp">Speed</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">All images → WebP</span><span class="pl">Lazy loading everywhere</span><span class="pl">WP Rocket: cache rules</span><span class="pl">GZIP + Brotli</span><span class="pl">Defer non-critical JS</span><span class="pl">Remove unused widget CSS</span></div></div>
+      </div><div class="mbar">🏁 Wk 7: All 50+ pages built · SQA 80% complete · Speed Phase 1 done</div></div>
+    </div>
+
+    <!-- W8 -->
+    <div class="wb w8">
+      <div class="wl"><div class="wn">Week 08</div><div class="wt">UAT, Core Web Vitals & Launch</div><div class="wd">Days 50–56</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc tsq"><div class="th"><span class="ti">🧪</span><span class="tn">SQA: UAT + Security + Regression (TC-161–180)</span><span class="tbdg bsq">SQA</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">UAT: admin team</span><span class="pl">UAT: 5 real students</span><span class="pl">Regression: all fixes retested</span><span class="pl">Wordfence security scan</span><span class="pl">SQL injection test</span><span class="pl">XSS test</span><span class="pl">Brute force test</span><span class="pl">SQA Sign-Off Doc</span></div></div>
+        <div class="tc tsp"><div class="th"><span class="ti">⚡</span><span class="tn">Speed: Phase 2 — Core Web Vitals Final</span><span class="tbdg bsp">Speed</span><span class="te">2d</span></div>
+        <div class="pls"><span class="pl">LCP hero preload</span><span class="pl">CLS image dimensions fix</span><span class="pl">INP minimize</span><span class="pl">Critical CSS inline</span><span class="pl">Render-blocking removed</span><span class="pl">JS bundle reduce</span><span class="pl">Cloudflare rules</span><span class="pl">Final: Mobile 85+ / Desktop 95+</span><span class="pl">GTmetrix Grade A</span></div></div>
+        <div class="tc tbe"><div class="th"><span class="ti">🔍</span><span class="tn">SEO, Analytics & 301 Redirects</span><span class="tbdg bbe">Backend</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Yoast SEO all pages</span><span class="pl">Schema markup (Org/Course/Event)</span><span class="pl">Sitemap → GSC</span><span class="pl">GA4 + GTM</span><span class="pl">301 redirects old URLs</span></div></div>
+        <div class="tc tbo"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS: Final Tuning + Handoff Guide</span><span class="tbdg bbo">Chatbot</span><span class="te">0.5d</span></div>
+        <div class="pls"><span class="pl">Fix UAT-flagged intents</span><span class="pl">Chatbot analytics baseline</span><span class="pl">Admin handoff PDF guide</span></div></div>
+        <div class="tc"><div class="th"><span class="ti">🚀</span><span class="tn">DNS Cutover & Go-Live</span><span class="tbdg bfe">Launch</span><span class="te">1d</span></div>
+        <div class="pls"><span class="pl">Pre-DNS backup</span><span class="pl">DNS propagation (off-peak)</span><span class="pl">SSL verified</span><span class="pl">Post-launch smoke test</span><span class="pl">24hr monitor</span><span class="pl">Admin training + guide PDF</span></div></div>
+      </div><div class="mbar">🚀 LAUNCH: saus.edu.pk live · TSAUS chatbot active · PageSpeed 90+ · GTmetrix A · SQA signed off</div></div>
+    </div>
+
+    <div class="mdiv">📅 Month 3 — Post-Launch Maintenance (Week 9–12)</div>
+
+    <!-- W9 -->
+    <div class="wb w9">
+      <div class="wl"><div class="wn">Wk 09–12</div><div class="wt">1-Month Maintenance Period</div><div class="wd">Days 57–88</div></div>
+      <div class="wb2"><div class="tg">
+        <div class="tc tma"><div class="th"><span class="ti">🛠️</span><span class="tn">Bug Fixes & Emergency Support</span><span class="tbdg bma">Maintenance</span><span class="te">Ongoing</span></div>
+        <div class="pls"><span class="pl">Critical bug fixes within 24hrs</span><span class="pl">Minor bug fixes within 72hrs</span><span class="pl">Form submission issue resolution</span><span class="pl">Broken link fixes</span><span class="pl">Plugin conflict resolution</span><span class="pl">WordPress core updates</span></div></div>
+        <div class="tc tma"><div class="th"><span class="ti">📊</span><span class="tn">Performance Monitoring</span><span class="tbdg bma">Maintenance</span><span class="te">Weekly</span></div>
+        <div class="pls"><span class="pl">Weekly PageSpeed reports</span><span class="pl">Uptime monitoring (99.9% SLA)</span><span class="pl">Database optimization</span><span class="pl">Backup verification</span><span class="pl">Security scan (Wordfence)</span><span class="pl">Cloudflare analytics review</span></div></div>
+        <div class="tc tma"><div class="th"><span class="ti">🤖</span><span class="tn">TSAUS Chatbot Maintenance</span><span class="tbdg bbo">Chatbot</span><span class="te">Weekly</span></div>
+        <div class="pls"><span class="pl">Review unmatched intent logs</span><span class="pl">Add missing Q&A pairs</span><span class="pl">Update dates / fee data</span><span class="pl">Weekly conversation report</span><span class="pl">Fix broken response flows</span></div></div>
+        <div class="tc tma"><div class="th"><span class="ti">📝</span><span class="tn">Content & Admin Support</span><span class="tbdg bma">Maintenance</span><span class="te">As needed</span></div>
+        <div class="pls"><span class="pl">Add new notices / announcements</span><span class="pl">Upload new events</span><span class="pl">Update merit lists</span><span class="pl">New faculty profile additions</span><span class="pl">New job postings</span><span class="pl">Content edit support (2hrs/week)</span></div></div>
+        <div class="tc tma"><div class="th"><span class="ti">📋</span><span class="tn">End-of-Month Maintenance Report</span><span class="tbdg bma">Maintenance</span><span class="te">Month end</span></div>
+        <div class="pls"><span class="pl">Issues resolved log</span><span class="pl">PageSpeed before/after</span><span class="pl">Chatbot analytics summary</span><span class="pl">User traffic report (GA4)</span><span class="pl">Recommendations for Month 2</span></div></div>
+      </div><div class="mbar">📋 Month 3 Close: Maintenance report delivered · Handover to SAUS IT team for Month 2+ maintenance</div></div>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- ════════════════════════════════════════
+     TECH MODULES
+════════════════════════════════════════ -->
+<div id="tech" class="sec"><div class="con">
+  <div class="sl">Technical Modules Deep-Dive</div>
+  <p class="ss">Architecture, tools, and implementation details for all 5 technical tracks.</p>
+  <div class="mg">
+
+    <div class="mc mbe">
+      <div class="mh"><div class="mtr"><span class="mic">🗄️</span><span class="mti" style="color:var(--be)">Backend Development</span></div>
+      <p class="msu">WordPress custom architecture: 12 modules powering faculty, admissions, portals, downloads, and automated workflows.</p></div>
+      <div class="mbd">
+        <div class="mst">Stack</div>
+        <div class="spls"><span class="spl">PHP 8.x</span><span class="spl">WP REST API</span><span class="spl">ACF Pro</span><span class="spl">WPForms Pro</span><span class="spl">Custom Post Types UI</span><span class="spl">WP Mail SMTP</span><span class="spl">MySQL 8</span><span class="spl">JWT Auth</span></div>
+        <div class="mst">12 Modules</div>
+        <ul class="fl">
+          <li><span class="fd fb"></span>7 CPTs + ACF field groups (Faculty, Dept, Programs, Notices, Downloads, Research, Careers)<span class="ftg">Wk2</span></li>
+          <li><span class="fd fb"></span>Faculty Self-Edit: login → update → admin approval<span class="ftg">Wk5</span></li>
+          <li><span class="fd fb"></span>Forms backend: SMTP routing, DB storage, auto-reply, hCaptcha<span class="ftg">Wk3</span></li>
+          <li><span class="fd fb"></span>Portal SSO: Student / Employee / Alumni (my.saus.edu.pk)<span class="ftg">Wk3</span></li>
+          <li><span class="fd fb"></span>Events & Notices: categories, recurring, auto-expiry<span class="ftg">Wk4</span></li>
+          <li><span class="fd fb"></span>Downloads Center: secure PDFs, counters, versioning<span class="ftg">Wk6</span></li>
+          <li><span class="fd fb"></span>Merit Lists: CPT filterable by year/program/dept<span class="ftg">Wk6</span></li>
+          <li><span class="fd fb"></span>Gallery CPT: albums, lazy lightbox<span class="ftg">Wk7</span></li>
+          <li><span class="fd fb"></span>News ticker: AJAX live refresh homepage<span class="ftg">Wk7</span></li>
+          <li><span class="fd fb"></span>Research Papers archive: DOI, author, year<span class="ftg">Wk7</span></li>
+          <li><span class="fd fb"></span>SEO Schema: Organization, Course, Event, Person<span class="ftg">Wk8</span></li>
+          <li><span class="fd fb"></span>Custom admin roles: Content Editor, Faculty Editor, Admissions Coordinator<span class="ftg">Wk1</span></li>
+        </ul>
+        <div class="mst">Security</div>
+        <ul class="fl">
+          <li><span class="fd fb"></span>Wordfence firewall + daily malware scan</li>
+          <li><span class="fd fb"></span>2FA on all admin accounts</li>
+          <li><span class="fd fb"></span>File editor disabled in wp-config.php</li>
+          <li><span class="fd fb"></span>XML-RPC disabled</li>
+          <li><span class="fd fb"></span>hCaptcha + honeypot on all forms</li>
+          <li><span class="fd fb"></span>Rate limiting on /wp-login.php</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mc mbo">
+      <div class="mh"><div class="mtr"><span class="mic">🤖</span><span class="mti" style="color:var(--bot)">TSAUS Chatbot</span></div>
+      <p class="msu">SAUS-branded AI assistant answering admissions, programs, campus, and support queries 24/7 in English and Urdu.</p></div>
+      <div class="mbd">
+        <div class="mst">Platform</div>
+        <div class="spls"><span class="spl">Tidio (recommended)</span><span class="spl">— or —</span><span class="spl">Botpress</span><span class="spl">Dialogflow CX</span><span class="spl">Custom GPT API</span></div>
+        <div class="mst">20+ Intents</div>
+        <ul class="fl">
+          <li><span class="fd fbo"></span>Admission eligibility check (program + grades → eligibility)<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Fee structure by program (table response)<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Application deadline & step-by-step process<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>7 department info flows<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Required documents checklist<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Merit list info and check dates<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Scholarship information<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Campus location + Google Maps link<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Exam dates & academic calendar<span class="ftg">Core</span></li>
+          <li><span class="fd fbo"></span>Faculty contact routing by department<span class="ftg">Support</span></li>
+          <li><span class="fd fbo"></span>Portal login help<span class="ftg">Support</span></li>
+          <li><span class="fd fbo"></span>Grading system explanation<span class="ftg">Info</span></li>
+          <li><span class="fd fbo"></span>Download form link buttons<span class="ftg">Info</span></li>
+          <li><span class="fd fbo"></span>ORIC / Research queries<span class="ftg">Info</span></li>
+          <li><span class="fd fbo"></span>Careers / job openings<span class="ftg">Info</span></li>
+          <li><span class="fd fbo"></span>English / Urdu language toggle<span class="ftg">Feature</span></li>
+          <li><span class="fd fbo"></span>Satisfaction rating 👍👎 per chat<span class="ftg">Feature</span></li>
+          <li><span class="fd fbo"></span>Fallback → human handoff (office hours)<span class="ftg">Fallback</span></li>
+          <li><span class="fd fbo"></span>Offline message collection form<span class="ftg">Fallback</span></li>
+          <li><span class="fd fbo"></span>WhatsApp number fallback<span class="ftg">Fallback</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mc msq">
+      <div class="mh"><div class="mtr"><span class="mic">🧪</span><span class="mti" style="color:var(--sqa)">SQA — 6 Phases</span></div>
+      <p class="msu">180+ test cases covering functional, UI, cross-browser, accessibility, security, chatbot, and UAT testing phases.</p></div>
+      <div class="mbd">
+        <div class="mst">Tools</div>
+        <div class="spls"><span class="spl">Playwright</span><span class="spl">BrowserStack</span><span class="spl">WAVE</span><span class="spl">Screaming Frog</span><span class="spl">GTmetrix</span><span class="spl">Wordfence</span><span class="spl">Trello</span></div>
+        <div class="mst">Phases</div>
+        <table class="ptb">
+          <tr><th>Phase</th><th>Type</th><th>Week</th><th>TCs</th></tr>
+          <tr><td>1</td><td>Unit — Forms, CPTs, APIs</td><td>Wk 2–3</td><td>001–050</td></tr>
+          <tr><td>2</td><td>Functional — All Pages & Modules</td><td>Wk 4–5</td><td>051–100</td></tr>
+          <tr><td>3</td><td>TSAUS Chatbot (all 20 flows)</td><td>Wk 5</td><td>081–100</td></tr>
+          <tr><td>4</td><td>Admissions Module Full QA</td><td>Wk 6</td><td>101–130</td></tr>
+          <tr><td>5</td><td>Cross-Browser + Accessibility</td><td>Wk 7</td><td>131–160</td></tr>
+          <tr><td>6</td><td>UAT + Security + Regression</td><td>Wk 8</td><td>161–180</td></tr>
+        </table>
+        <div class="mst">Coverage</div>
+        <ul class="fl">
+          <li><span class="fd fsq"></span>Functional: links, buttons, forms, filters, downloads, portals</li>
+          <li><span class="fd fsq"></span>UI: responsive on mobile, tablet, desktop</li>
+          <li><span class="fd fsq"></span>Cross-browser: Chrome, Firefox, Safari, Edge (latest 2)</li>
+          <li><span class="fd fsq"></span>Devices: Android, iOS, iPad</li>
+          <li><span class="fd fsq"></span>Accessibility: WCAG 2.1 Level AA</li>
+          <li><span class="fd fsq"></span>Security: injection, brute force, XSS, file access</li>
+          <li><span class="fd fsq"></span>Performance: under 3s on 4G simulation</li>
+          <li><span class="fd fsq"></span>Chatbot: all 20 intents + edge cases + fallback</li>
+          <li><span class="fd fsq"></span>UAT: real students & admin staff sessions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mc msp">
+      <div class="mh"><div class="mtr"><span class="mic">⚡</span><span class="mti" style="color:var(--spd)">Speed Optimization</span></div>
+      <p class="msu">4-layer strategy: PageSpeed 90+ mobile, GTmetrix Grade A, and all Core Web Vitals in green.</p></div>
+      <div class="mbd">
+        <div class="mst">Stack</div>
+        <div class="spls"><span class="spl">WP Rocket</span><span class="spl">Cloudflare CDN</span><span class="spl">ShortPixel</span><span class="spl">Autoptimize</span><span class="spl">GTmetrix Pro</span></div>
+        <div class="mst">4 Layers</div>
+        <ul class="fl">
+          <li><span class="fd fsp"></span>Layer 1 — Images: WebP, lazy load, srcset, preload LCP hero</li>
+          <li><span class="fd fsp"></span>Layer 2 — Caching: WP Rocket, browser cache 1yr, Cloudflare CDN, GZIP+Brotli</li>
+          <li><span class="fd fsp"></span>Layer 3 — Code: minify CSS/JS/HTML, defer JS, remove unused widget CSS, inline critical CSS</li>
+          <li><span class="fd fsp"></span>Layer 4 — Core Web Vitals: LCP &lt;2.5s, CLS &lt;0.1, INP &lt;200ms</li>
+        </ul>
+        <div class="mst">Benchmarks</div>
+        <table class="ptb">
+          <tr><th>Metric</th><th>Current</th><th>Target</th></tr>
+          <tr><td>PageSpeed Mobile</td><td>~40–55</td><td style="color:var(--spd);font-weight:700">85+</td></tr>
+          <tr><td>PageSpeed Desktop</td><td>~60–70</td><td style="color:var(--spd);font-weight:700">95+</td></tr>
+          <tr><td>GTmetrix Grade</td><td>D–C</td><td style="color:var(--spd);font-weight:700">A</td></tr>
+          <tr><td>LCP</td><td>&gt;4s</td><td>&lt;2.5s</td></tr>
+          <tr><td>Page Size</td><td>&gt;5MB</td><td>&lt;1.5MB</td></tr>
+          <tr><td>HTTP Requests</td><td>&gt;80</td><td>&lt;40</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="mc mma">
+      <div class="mh"><div class="mtr"><span class="mic">🔧</span><span class="mti" style="color:var(--gold)">1-Month Maintenance</span></div>
+      <p class="msu">Post-launch 30-day maintenance period covering bugs, performance, chatbot tuning, content support, and a full monthly report.</p></div>
+      <div class="mbd">
+        <div class="mst">What's Included</div>
+        <ul class="fl">
+          <li><span class="fd fma"></span>Critical bug fixes within 24 hours of reporting</li>
+          <li><span class="fd fma"></span>Minor bug fixes within 72 hours</li>
+          <li><span class="fd fma"></span>WordPress core, theme & plugin updates</li>
+          <li><span class="fd fma"></span>Weekly uptime + PageSpeed monitoring reports</li>
+          <li><span class="fd fma"></span>Weekly Wordfence security scans</li>
+          <li><span class="fd fma"></span>Database optimization (weekly cleanup)</li>
+          <li><span class="fd fma"></span>Backup verification (UpdraftPlus weekly)</li>
+          <li><span class="fd fma"></span>TSAUS chatbot: weekly intent review + fix unmatched Q&A</li>
+          <li><span class="fd fma"></span>TSAUS: update fee/date data as needed</li>
+          <li><span class="fd fma"></span>Content support: add notices, events, jobs (2 hrs/week)</li>
+          <li><span class="fd fma"></span>New faculty profile additions</li>
+          <li><span class="fd fma"></span>Plugin conflict resolution</li>
+          <li><span class="fd fma"></span>End-of-month full report (issues, traffic, chatbot, speed)</li>
+          <li><span class="fd fma"></span>Handover documentation for SAUS IT team</li>
+        </ul>
+        <div class="mst">SLA Commitments</div>
+        <ul class="fl">
+          <li><span class="fd fma"></span>Response time: Critical → 4hrs, Major → 24hrs, Minor → 72hrs</li>
+          <li><span class="fd fma"></span>Uptime monitoring: 99.9% target</li>
+          <li><span class="fd fma"></span>Communication via WhatsApp / Email</li>
+          <li><span class="fd fma"></span>Available Mon–Sat, 9am–6pm PKT</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- ════════════════════════════════════════
+     ALL PAGES
+════════════════════════════════════════ -->
+<div id="pages" class="sec"><div class="con">
+  <div class="sl">All Pages & Modules</div>
+  <p class="ss">Complete inventory of 50+ frontend pages, backend modules, TSAUS chatbot, SQA deliverables, and speed work.</p>
+  <div class="dg">
+    <div class="dc"><div class="dh"><span class="die">🏠</span><span class="dti">Homepage</span><span class="dct">1 page</span></div><div class="db"><ul class="pll"><li>Homepage (Hero + TSAUS + All Sections)<span class="pt tr2">Full Rebuild</span></li></ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🏛️</span><span class="dti">About SAUS</span><span class="dct">8 pages</span></div><div class="db"><ul class="pll">
+      <li>About Us<span class="pt tc2">Content</span></li><li>Vision & Mission<span class="pt tc2">Content</span></li><li>Aims & Objectives<span class="pt tc2">Content</span></li>
+      <li>Vice Chancellor Message<span class="pt tr2">Rebuild</span></li><li>At a Glance<span class="pt tr2">Rebuild</span></li>
+      <li>SAUS Alumni Association<span class="pt tn3">New</span></li><li>Media & Public Relations<span class="pt tr2">Rebuild</span></li><li>Statutory Bodies Overview<span class="pt tr2">Rebuild</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">⚖️</span><span class="dti">Statutory Bodies</span><span class="dct">4 pages</span></div><div class="db"><ul class="pll">
+      <li>Senate<span class="pt tc2">Content</span></li><li>Syndicate<span class="pt tc2">Content</span></li><li>Selection Board<span class="pt tc2">Content</span></li><li>Finance & Planning Cmte<span class="pt tc2">Content</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🏢</span><span class="dti">Administration</span><span class="dct">5 pages</span></div><div class="db"><ul class="pll">
+      <li>Controller of Examinations<span class="pt tr2">Rebuild</span></li><li>Admission Office<span class="pt tr2">Rebuild</span></li>
+      <li>Plantation & Beautification<span class="pt tc2">Content</span></li><li>Inspector of Affiliated Colleges<span class="pt tc2">Content</span></li><li>IT Center<span class="pt tr2">Rebuild</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🎓</span><span class="dti">Academics Core</span><span class="dct">8 pages</span></div><div class="db"><ul class="pll">
+      <li>Academics Overview<span class="pt tn3">New</span></li><li>Academic Calendar<span class="pt tr2">Rebuild</span></li><li>Programs Offered<span class="pt tr2">Rebuild</span></li>
+      <li>Grading Criteria<span class="pt tc2">Content</span></li><li>Scholarships & Financial Aid<span class="pt tr2">Rebuild</span></li>
+      <li>HEC Approved Supervisors<span class="pt tc2">Content</span></li><li>HEC Plagiarism Policy<span class="pt tc2">Content</span></li><li>Code of Conduct<span class="pt tc2">Content</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🖥️</span><span class="dti">7 Departments</span><span class="dct">7 pages</span></div><div class="db"><ul class="pll">
+      <li>Computer Science<span class="pt tr2">Rebuild</span></li><li>Mathematics<span class="pt tr2">Rebuild</span></li><li>Business Administration<span class="pt tr2">Rebuild</span></li>
+      <li>Commerce<span class="pt tr2">Rebuild</span></li><li>English Language & Lit<span class="pt tr2">Rebuild</span></li><li>Teacher Education<span class="pt tr2">Rebuild</span></li><li>Basic Sciences<span class="pt tr2">Rebuild</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">👨‍🏫</span><span class="dti">Faculty Directory</span><span class="dct">3+BE</span></div><div class="db"><ul class="pll">
+      <li>Faculty Directory (filterable)<span class="pt tn3">New</span></li><li>Permanent Faculty<span class="pt tr2">Rebuild</span></li><li>Visiting Faculty<span class="pt tr2">Rebuild</span></li>
+      <li>Faculty Self-Edit System<span class="pt tbe2">Backend</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🎯</span><span class="dti">Admissions Module</span><span class="dct">16 pages</span></div><div class="db"><ul class="pll">
+      <li>Admissions Hub<span class="pt tn3">New</span></li><li>Eligibility Criteria<span class="pt tc2">Content</span></li><li>Admission Process<span class="pt tc2">Content</span></li>
+      <li>Fee Structure<span class="pt tr2">Rebuild</span></li><li>Apply Online / Bachelor<span class="pt tr2">Rebuild</span></li><li>Required Documents<span class="pt tc2">Content</span></li>
+      <li>FAQs<span class="pt tr2">Rebuild</span></li><li>Timeline / Schedule<span class="pt tc2">Content</span></li><li>Reserved Seats<span class="pt tc2">Content</span></li>
+      <li>Merit Criteria<span class="pt tc2">Content</span></li><li>Merit Lists (dynamic)<span class="pt tbe2">Backend</span></li><li>Notices (auto-expiry)<span class="pt tbe2">Backend</span></li>
+      <li>Downloads Center<span class="pt tbe2">Backend</span></li><li>Admissions Query Form<span class="pt tbe2">Backend</span></li><li>Sample Papers<span class="pt tc2">Content</span></li><li>Prospectus 2022<span class="pt tm2">Media</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🎪</span><span class="dti">Life at SAUS</span><span class="dct">8 pages</span></div><div class="db"><ul class="pll">
+      <li>Campus Overview<span class="pt tr2">Rebuild</span></li><li>Events (Calendar)<span class="pt tbe2">Backend</span></li><li>News Archive<span class="pt tr2">Rebuild</span></li>
+      <li>Student Forums Hub<span class="pt tn3">New</span></li><li>Data Science Society<span class="pt tr2">Rebuild</span></li><li>Interfaith Harmony Centre<span class="pt tr2">Rebuild</span></li>
+      <li>Gallery (filterable)<span class="pt tbe2">Backend</span></li><li>Campus Tour (video)<span class="pt tn3">New</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🏟️</span><span class="dti">Facilities (10)</span><span class="dct">10 pages</span></div><div class="db"><ul class="pll">
+      <li>Cafeteria<span class="pt tc2">Content</span></li><li>Sports<span class="pt tc2">Content</span></li><li>Transport<span class="pt tc2">Content</span></li><li>Auditorium<span class="pt tc2">Content</span></li><li>Computer Labs<span class="pt tc2">Content</span></li>
+      <li>Smart Classroom<span class="pt tc2">Content</span></li><li>IT Services<span class="pt tc2">Content</span></li><li>Digital Library<span class="pt tc2">Content</span></li><li>Career Dev Center<span class="pt tr2">Rebuild</span></li><li>Student Affairs<span class="pt tc2">Content</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">🔬</span><span class="dti">Research Section</span><span class="dct">12 pages</span></div><div class="db"><ul class="pll">
+      <li>Research Overview<span class="pt tn3">New</span></li><li>Workshops<span class="pt tr2">Rebuild</span></li><li>Seminars<span class="pt tr2">Rebuild</span></li><li>Conferences (CEBET-2026)<span class="pt tr2">Rebuild</span></li>
+      <li>Journals<span class="pt tc2">Content</span></li><li>QEC Mission & Vision<span class="pt tc2">Content</span></li><li>QEC The Team<span class="pt tc2">Content</span></li><li>QEC Program Team<span class="pt tc2">Content</span></li>
+      <li>ORIC Overview<span class="pt tr2">Rebuild</span></li><li>ORIC Research Projects<span class="pt tc2">Content</span></li><li>ORIC Research Papers<span class="pt tbe2">Backend</span></li><li>ORIC Teachers Form<span class="pt tbe2">Backend</span></li>
+    </ul></div></div>
+    <div class="dc"><div class="dh"><span class="die">📰</span><span class="dti">Blog, Media & Other</span><span class="dct">5 pages</span></div><div class="db"><ul class="pll">
+      <li>Blog Archive<span class="pt tr2">Rebuild</span></li><li>Careers / Jobs<span class="pt tr2">Rebuild</span></li><li>SJHSS<span class="pt tc2">Content</span></li><li>International Conference<span class="pt tr2">Rebuild</span></li><li>Contact Page<span class="pt tn3">New</span></li>
+    </ul></div></div>
+  </div>
+</div></div>
+
+<!-- ════════════════════════════════════════
+     CONTENT PLAN
+════════════════════════════════════════ -->
+<div id="content" class="sec"><div class="con">
+  <div class="sl">Content & Media Production Plan</div>
+  <p class="ss">Everything to write, shoot, film, design, or collect — prioritised HIGH / MED / LOW.</p>
+  <div class="cg">
+    <div class="cc"><h3>✍️ Written Content</h3><ul class="cl">
+      <li>About SAUS history (800–1000w)<span class="pr ph">HIGH</span></li>
+      <li>Vision & Mission (250w)<span class="pr ph">HIGH</span></li>
+      <li>VC Welcome Message (400w)<span class="pr ph">HIGH</span></li>
+      <li>7 Dept intros (300w each)<span class="pr ph">HIGH</span></li>
+      <li>All program descriptions<span class="pr ph">HIGH</span></li>
+      <li>Admission eligibility & process<span class="pr ph">HIGH</span></li>
+      <li>20+ Admissions FAQs<span class="pr pm">MED</span></li>
+      <li>10 Facilities descriptions (100w each)<span class="pr pm">MED</span></li>
+      <li>ORIC / Research overview text<span class="pr pm">MED</span></li>
+      <li>Blog — 3 launch posts<span class="pr pl2">LOW</span></li>
+    </ul></div>
+    <div class="cc"><h3>📸 Photography Shots Needed</h3><ul class="cl">
+      <li>Campus hero shots (main gate, admin, lawns)<span class="pr ph">HIGH</span></li>
+      <li>VC & senior admin formal portraits<span class="pr ph">HIGH</span></li>
+      <li>All faculty headshots (formal, white bg)<span class="pr ph">HIGH</span></li>
+      <li>Computer labs (with students)<span class="pr ph">HIGH</span></li>
+      <li>Classrooms & smart classrooms<span class="pr ph">HIGH</span></li>
+      <li>Library interior<span class="pr pm">MED</span></li>
+      <li>Auditorium full view<span class="pr pm">MED</span></li>
+      <li>Sports grounds<span class="pr pm">MED</span></li>
+      <li>Student life candid (with consent)<span class="pr pl2">LOW</span></li>
+    </ul></div>
+    <div class="cc"><h3>🎥 Video Production</h3><ul class="cl">
+      <li>Campus tour walkthrough (2–3 min)<span class="pr ph">HIGH</span></li>
+      <li>VC welcome video (90 sec)<span class="pr ph">HIGH</span></li>
+      <li>Admissions explainer video (90 sec)<span class="pr pm">MED</span></li>
+      <li>Department spotlight reels ×3<span class="pr pm">MED</span></li>
+      <li>Student testimonials (2 min)<span class="pr pl2">LOW</span></li>
+    </ul></div>
+    <div class="cc"><h3>🎨 Design Assets</h3><ul class="cl">
+      <li>SAUS logo PNG + SVG high-res<span class="pr ph">HIGH</span></li>
+      <li>Department icons/badges (7)<span class="pr ph">HIGH</span></li>
+      <li>Hero slider backgrounds (3–4)<span class="pr ph">HIGH</span></li>
+      <li>At a Glance stats infographic<span class="pr ph">HIGH</span></li>
+      <li>TSAUS chatbot avatar (branded)<span class="pr pm">MED</span></li>
+      <li>Admission process step diagram<span class="pr pm">MED</span></li>
+      <li>Fee structure table design<span class="pr pm">MED</span></li>
+    </ul></div>
+    <div class="cc"><h3>📄 Documents to Collect</h3><ul class="cl">
+      <li>Prospectus 2022 (updated version)<span class="pr ph">HIGH</span></li>
+      <li>All 6 official downloadable forms<span class="pr ph">HIGH</span></li>
+      <li>Academic Calendar PDF<span class="pr ph">HIGH</span></li>
+      <li>Fee Structure PDF (current year)<span class="pr ph">HIGH</span></li>
+      <li>Affiliation Rules document<span class="pr pm">MED</span></li>
+      <li>Sample Papers per dept<span class="pr pm">MED</span></li>
+      <li>Course outlines per department<span class="pr pm">MED</span></li>
+    </ul></div>
+    <div class="cc"><h3>🤖 TSAUS Chatbot Content</h3><ul class="cl">
+      <li>60+ admission FAQs in Q&A format<span class="pr ph">HIGH</span></li>
+      <li>Fee data all programs<span class="pr ph">HIGH</span></li>
+      <li>7 dept descriptions (50w each)<span class="pr ph">HIGH</span></li>
+      <li>Key contacts & emails<span class="pr ph">HIGH</span></li>
+      <li>Campus address + Maps link<span class="pr ph">HIGH</span></li>
+      <li>Important dates (admission, exams)<span class="pr pm">MED</span></li>
+      <li>Urdu translations for core responses<span class="pr pm">MED</span></li>
+    </ul></div>
+  </div>
+</div></div>
+
+<!-- ════════════════════════════════════════
+     PRICING PROPOSAL ← NEW TAB
+════════════════════════════════════════ -->
+<div id="pricing" class="sec"><div class="con">
+  <div class="sl">Pricing Proposal</div>
+  <p class="ss">Market rate analysis vs. our team's competitive ask — for Muhammad Uzair & Shayan Ali. Excludes: content writing, theme purchase, hosting, and any third-party software costs.</p>
+
+  <!-- SCOPE EXCLUSIONS -->
+  <div class="scope-exclusions">
+    <h4>⚠️ This Proposal Excludes (Billed Separately or by Client)</h4>
+    <div class="excl-grid">
+      <div class="excl-item">Content writing & copywriting</div>
+      <div class="excl-item">Unipix theme purchase (₨4,500 ~$49)</div>
+      <div class="excl-item">Hosting / server costs</div>
+      <div class="excl-item">Elementor Pro license</div>
+      <div class="excl-item">Photography & videography</div>
+      <div class="excl-item">Paid plugin licenses (WP Rocket, ACF Pro, etc.)</div>
+      <div class="excl-item">Domain renewal</div>
+      <div class="excl-item">Premium chatbot platform subscription</div>
+    </div>
+  </div>
+
+  <!-- VS SUMMARY -->
+  <div class="vs-divider">
+    <div class="vs-box vs-market">
+      <div class="vs-box-label">Market Rate — Full Scope</div>
+      <div class="vs-box-amount">₨400,000+</div>
+      <div class="vs-box-note">2 developers × ₨200,000+ each<br>at prevailing Pakistan freelance/agency rates</div>
+    </div>
+    <div class="vs-sep">VS</div>
+    <div class="vs-box vs-our">
+      <div class="vs-box-label">Our Ask — Total Project</div>
+      <div class="vs-box-amount">₨300,000</div>
+      <div class="vs-box-note">₨150,000 per developer<br>Muhammad Uzair + Shayan Ali</div>
+    </div>
+  </div>
+
+  <!-- DEV CARDS -->
+  <div class="price-grid">
+
+    <!-- DEV 1 — UZAIR -->
+    <div class="price-card">
+      <div class="pc-header">
+        <div class="pc-avatar av1">👨‍💻</div>
+        <div>
+          <div class="pc-name">Muhammad Uzair</div>
+          <div class="pc-role">Frontend Lead · TSAUS Chatbot · SQA Lead · Project Manager</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-section-title">Frontend Development</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">Homepage (full build, all sections)</span><span class="li-market">₨25,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">About + Governance pages (13 pages)</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">7 Department pages (Unipix template)</span><span class="li-market">₨22,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">Academics core pages (8 pages)</span><span class="li-market">₨12,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">Life at SAUS + Facilities (18 pages)</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--w1)"></span><span class="li-name">Admissions module — frontend (16 pages)</span><span class="li-market">₨20,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+        </ul>
+        <div class="pc-section-title">TSAUS Chatbot</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--bot)"></span><span class="li-name">Platform setup + SAUS branding</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--bot)"></span><span class="li-name">20+ intent knowledge base + flows</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--bot)"></span><span class="li-name">Urdu/English toggle + analytics</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+        </ul>
+        <div class="pc-section-title">SQA & Project Management</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--sqa)"></span><span class="li-name">Master Test Plan + 180 test cases</span><span class="li-market">₨15,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--sqa)"></span><span class="li-name">6-phase testing execution + reports</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--sqa)"></span><span class="li-name">UAT coordination + sign-off doc</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--a3)"></span><span class="li-name">Project management + client communication</span><span class="li-market">₨12,000</span><span class="li-our" style="color:var(--a2)">Included</span></li>
+        </ul>
+        <div class="pc-total">
+          <div>
+            <div class="pct-label">Market Rate for Uzair's Scope</div>
+            <div class="pct-market">₨202,000</div>
+          </div>
+          <div style="text-align:right">
+            <div class="pct-our" style="color:var(--a2)">₨150,000</div>
+            <div class="pct-save">Save ₨52,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEV 2 — SHAYAN ALI -->
+    <div class="price-card">
+      <div class="pc-header">
+        <div class="pc-avatar av2">👨‍🔧</div>
+        <div>
+          <div class="pc-name">Shayan Ali</div>
+          <div class="pc-role">Backend Lead · Speed Optimization · DevOps · Maintenance</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-section-title">Backend Development (12 Modules)</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">7 Custom Post Types + ACF Pro setup</span><span class="li-market">₨20,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Faculty self-edit system + approval workflow</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">5 forms backend (SMTP, DB, auto-reply, CAPTCHA)</span><span class="li-market">₨15,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Portal SSO integration (my.saus.edu.pk)</span><span class="li-market">₨18,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Events / Notices / Newsroom backend</span><span class="li-market">₨12,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Downloads Center + Merit Lists dynamic backend</span><span class="li-market">₨15,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Gallery / Blog / Research / Careers backend</span><span class="li-market">₨12,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">SEO schema markup + GA4 + 301 redirects</span><span class="li-market">₨10,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--be)"></span><span class="li-name">Security hardening (Wordfence, 2FA, rate limit)</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+        </ul>
+        <div class="pc-section-title">Speed Optimization (4 Layers)</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--spd)"></span><span class="li-name">Images (WebP, lazy load, preload LCP)</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--spd)"></span><span class="li-name">Caching: WP Rocket + Cloudflare CDN setup</span><span class="li-market">₨10,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--spd)"></span><span class="li-name">Code: minify/defer/inline critical CSS</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--spd)"></span><span class="li-name">Core Web Vitals pass + GTmetrix Grade A</span><span class="li-market">₨10,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+        </ul>
+        <div class="pc-section-title">1-Month Post-Launch Maintenance</div>
+        <ul class="line-items">
+          <li><span class="li-dot" style="background:var(--gold)"></span><span class="li-name">Bug fixes + WP updates + security scans</span><span class="li-market">₨12,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--gold)"></span><span class="li-name">TSAUS chatbot weekly tuning</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--gold)"></span><span class="li-name">Performance monitoring + monthly report</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+          <li><span class="li-dot" style="background:var(--gold)"></span><span class="li-name">Content support (2hrs/week) + handover doc</span><span class="li-market">₨8,000</span><span class="li-our" style="color:var(--gold)">Included</span></li>
+        </ul>
+        <div class="pc-total">
+          <div>
+            <div class="pct-label">Market Rate for Shayan's Scope</div>
+            <div class="pct-market">₨200,000</div>
+          </div>
+          <div style="text-align:right">
+            <div class="pct-our" style="color:var(--gold)">₨150,000</div>
+            <div class="pct-save">Save ₨50,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /price-grid -->
+
+  <!-- GRAND TOTAL HERO -->
+  <div class="price-hero">
+    <div class="ph-top">
+      <div class="ph-left">
+        <h2>📋 Project Grand Total Summary</h2>
+        <p>Complete full-stack website rebuild — 8 weeks development + 1 month maintenance. Two dedicated developers. All scope above included at a rate that is 25%+ below market.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="ph-stamp" style="background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.2)">
+          <div class="ps-label" style="color:var(--red)">Market Rate</div>
+          <div class="ps-num" style="color:var(--red)">₨402,000</div>
+          <div class="ps-sub">For equivalent scope</div>
+        </div>
+        <div class="ph-stamp">
+          <div class="ps-label">Our Ask</div>
+          <div class="ps-num">₨300,000</div>
+          <div class="ps-sub">₨150k × 2 developers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-card"><h5>Payment Structure</h5>
+          <div class="term-val">3 Instalments</div>
+          <div class="term-note">30% upfront (₨90k) · 40% at Week 4 milestone (₨120k) · 30% on launch (₨90k)</div>
+        </div>
+      </div>
+      <div class="term-card">
+        <h5>Project Duration</h5>
+        <div class="term-val">9 Weeks Total</div>
+        <div class="term-note">8 weeks dev + 1 month post-launch maintenance included in price</div>
+      </div>
+      <div class="term-card">
+        <h5>Revision Policy</h5>
+        <div class="term-val">2 Rounds Included</div>
+        <div class="term-note">2 revision rounds per major section. Additional revisions: ₨2,000/hr per developer</div>
+      </div>
+      <div class="term-card">
+        <h5>Team Availability</h5>
+        <div class="term-val">Mon–Sat, Full Time</div>
+        <div class="term-note">Both developers dedicated full-time. Weekly progress meeting + WhatsApp updates daily</div>
+      </div>
+      <div class="term-card">
+        <h5>Post-Maintenance Rate</h5>
+        <div class="term-val">₨25,000 / month</div>
+        <div class="term-note">Optional monthly retainer after the included 1-month maintenance period ends</div>
+      </div>
+      <div class="term-card">
+        <h5>Deliverables</h5>
+        <div class="term-val">Full Handover</div>
+        <div class="term-note">Source files, admin credentials, plugin licenses, SQA report, chatbot guide, WordPress training PDF</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE BREAKDOWN CARD -->
+  <div class="maint-card">
+    <div class="mc-top">
+      <div class="mc-icon">🔧</div>
+      <div>
+        <div class="mc-title">1-Month Maintenance — What You Get</div>
+        <div class="mc-sub">Included free in the ₨300,000 package. Normally valued at ₨20,000–₨30,000 separately.</div>
+      </div>
+    </div>
+    <div class="maint-grid">
+      <div class="maint-item"><h5>🐛 Bug Fixes</h5><ul>
+        <li>Critical bugs: 24hr fix</li><li>Major bugs: 72hr fix</li><li>Minor issues: next update cycle</li><li>Plugin conflict resolution</li>
+      </ul></div>
+      <div class="maint-item"><h5>⚡ Performance</h5><ul>
+        <li>Weekly PageSpeed reports</li><li>DB optimization</li><li>Uptime monitoring (99.9%)</li><li>Backup verification</li>
+      </ul></div>
+      <div class="maint-item"><h5>🤖 TSAUS Chatbot</h5><ul>
+        <li>Weekly intent review</li><li>Fix unmatched queries</li><li>Update fee/dates data</li><li>Chatbot analytics report</li>
+      </ul></div>
+      <div class="maint-item"><h5>📝 Content Support</h5><ul>
+        <li>Add notices & events</li><li>Update merit lists</li><li>New faculty additions</li><li>2hrs/week content edits</li>
+      </ul></div>
+      <div class="maint-item"><h5>🔒 Security</h5><ul>
+        <li>Weekly Wordfence scan</li><li>WP + plugin updates</li><li>SSL certificate check</li><li>Security scan report</li>
+      </ul></div>
+      <div class="maint-item"><h5>📊 Monthly Report</h5><ul>
+        <li>Issues resolved log</li><li>GA4 traffic summary</li><li>Chatbot analytics</li><li>Handover documentation</li>
+      </ul></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════════════════════════════════
+     OVERVIEW
+════════════════════════════════════════ -->
+<div id="ov" class="sec"><div class="con">
+  <div class="sl">Project Overview</div>
+  <p class="ss">Effort distribution, full tech stack, risk register, and 20-point pre-launch checklist.</p>
+  <div class="og">
+    <div class="oc"><h3>📊 Effort by Track</h3>
+      <div class="prr"><span class="prl">Frontend / UI</span><div class="prw"><div class="prb" style="width:100%;background:var(--w1)"></div></div><span class="prp">34%</span></div>
+      <div class="prr"><span class="prl">Backend / API</span><div class="prw"><div class="prb" style="width:76%;background:var(--be)"></div></div><span class="prp">26%</span></div>
+      <div class="prr"><span class="prl">SQA / Testing</span><div class="prw"><div class="prb" style="width:50%;background:var(--sqa)"></div></div><span class="prp">17%</span></div>
+      <div class="prr"><span class="prl">Maintenance</span><div class="prw"><div class="prb" style="width:38%;background:var(--gold)"></div></div><span class="prp">13%</span></div>
+      <div class="prr"><span class="prl">Speed Optim.</span><div class="prw"><div class="prb" style="width:20%;background:var(--spd)"></div></div><span class="prp">7%</span></div>
+      <div class="prr"><span class="prl">TSAUS Chatbot</span><div class="prw"><div class="prb" style="width:17%;background:var(--bot)"></div></div><span class="prp">6%</span></div>
+      <div class="prr"><span class="prl">Media / Content</span><div class="prw"><div class="prb" style="width:8%;background:var(--a3)"></div></div><span class="prp">3%*</span></div>
+    </div>
+    <div class="oc"><h3>🛠️ Full Tech Stack</h3><ul class="tl3">
+      <li><span class="tli">🌐</span>WordPress 6.x<span class="tlp">CMS</span></li>
+      <li><span class="tli">🎨</span>Unipix Theme + Elementor Pro<span class="tlp">Frontend</span></li>
+      <li><span class="tli">🔧</span>ACF Pro + Custom Post Types UI<span class="tlp">Backend Data</span></li>
+      <li><span class="tli">📋</span>WPForms Pro + WP Mail SMTP<span class="tlp">Forms</span></li>
+      <li><span class="tli">📅</span>The Events Calendar<span class="tlp">Events</span></li>
+      <li><span class="tli">🤖</span>Tidio / Botpress (TSAUS)<span class="tlp">AI Chatbot</span></li>
+      <li><span class="tli">🔍</span>Yoast SEO Premium<span class="tlp">SEO</span></li>
+      <li><span class="tli">⚡</span>WP Rocket + Cloudflare CDN<span class="tlp">Speed</span></li>
+      <li><span class="tli">🗜️</span>ShortPixel (WebP)<span class="tlp">Images</span></li>
+      <li><span class="tli">🔒</span>Wordfence + hCaptcha<span class="tlp">Security</span></li>
+      <li><span class="tli">🧪</span>Playwright + BrowserStack + WAVE<span class="tlp">SQA</span></li>
+      <li><span class="tli">📊</span>Google Analytics 4 + GTM<span class="tlp">Analytics</span></li>
+      <li><span class="tli">💾</span>UpdraftPlus<span class="tlp">Backups</span></li>
+    </ul></div>
+    <div class="oc"><h3>⚠️ Key Risks</h3><ul class="tl3">
+      <li><span class="tli">🟠</span>Faculty data collection delays<span class="tlp">Start Wk 1</span></li>
+      <li><span class="tli">🟠</span>Photography scheduling<span class="tlp">Book Wk 1</span></li>
+      <li><span class="tli">🟠</span>Admin approval bottlenecks<span class="tlp">Weekly reviews</span></li>
+      <li><span class="tli">🟠</span>Portal SSO integration complexity<span class="tlp">Early API meeting</span></li>
+      <li><span class="tli">🟡</span>TSAUS chatbot intent gaps<span class="tlp">Weekly review</span></li>
+      <li><span class="tli">🟡</span>PDF/form file collection delays<span class="tlp">Shared drive Wk 1</span></li>
+      <li><span class="tli">🟡</span>Hosting server performance limits<span class="tlp">Upgrade if needed</span></li>
+      <li><span class="tli">🟡</span>SQA bug backlog piling up<span class="tlp">Daily triage</span></li>
+      <li><span class="tli">🟢</span>DNS cutover risk<span class="tlp">Weekend launch</span></li>
+      <li><span class="tli">🟢</span>Video production delays<span class="tlp">Shoot Wk 2 & 5</span></li>
+    </ul></div>
+    <div class="oc"><h3>✅ 20-Point Pre-Launch Checklist</h3><ul class="tl3">
+      <li><span class="tli">☐</span>All 50+ pages built & proofread</li>
+      <li><span class="tli">☐</span>All 12 backend modules functional</li>
+      <li><span class="tli">☐</span>TSAUS: all 20 intents tested & live</li>
+      <li><span class="tli">☐</span>SQA sign-off document completed</li>
+      <li><span class="tli">☐</span>PageSpeed Mobile 85+ / Desktop 95+</li>
+      <li><span class="tli">☐</span>GTmetrix Grade A achieved</li>
+      <li><span class="tli">☐</span>All forms tested (submit + email)</li>
+      <li><span class="tli">☐</span>All PDF downloads verified</li>
+      <li><span class="tli">☐</span>Mobile + tablet (3 devices) tested</li>
+      <li><span class="tli">☐</span>Cross-browser: Chrome/Firefox/Safari/Edge</li>
+      <li><span class="tli">☐</span>WCAG 2.1 AA accessibility passed</li>
+      <li><span class="tli">☐</span>Security scan clean (Wordfence)</li>
+      <li><span class="tli">☐</span>SSL active + HTTPS enforced</li>
+      <li><span class="tli">☐</span>GA4 tracking confirmed</li>
+      <li><span class="tli">☐</span>Sitemap submitted to GSC</li>
+      <li><span class="tli">☐</span>301 redirects from old URLs set</li>
+      <li><span class="tli">☐</span>Pre-launch backup taken</li>
+      <li><span class="tli">☐</span>Admin training + editing guide</li>
+      <li><span class="tli">☐</span>DNS cutover off-peak hours</li>
+      <li><span class="tli">☐</span>24hr post-launch monitoring active</li>
+    </ul></div>
+  </div>
+</div></div>
+
+<script>
+function go(id,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
